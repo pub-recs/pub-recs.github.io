@@ -332,18 +332,28 @@ function handleSearch() {
 function init() {
     let username = null;
     
-    // Check if there's a username in the URL path (e.g., /dalevross or /dalevross/)
-    const pathname = window.location.pathname;
-    const pathParts = pathname.split('/').filter(part => part.length > 0);
+    // Check for redirected path from 404.html
+    const urlParams = new URLSearchParams(window.location.search);
+    const pathParam = urlParams.get('path');
     
-    // If there's a path component, use it as the username
-    if (pathParts.length > 0) {
-        // Use the first path component as the username
-        username = pathParts[0];
+    if (pathParam) {
+        // Path was passed from 404 redirect
+        const pathParts = pathParam.split('/').filter(part => part.length > 0);
+        if (pathParts.length > 0) {
+            username = pathParts[0];
+        }
+    } else {
+        // Check if there's a username in the URL path (e.g., /dalevross or /dalevross/)
+        const pathname = window.location.pathname;
+        const pathParts = pathname.split('/').filter(part => part.length > 0);
+        
+        // If there's a path component and it's not index.html, use it as the username
+        if (pathParts.length > 0 && pathParts[0] !== 'index.html') {
+            username = pathParts[0];
+        }
     }
     
-    // URL parameters take precedence over path-based username
-    const urlParams = new URLSearchParams(window.location.search);
+    // Direct URL parameters take precedence
     const gistParam = urlParams.get('gist') || urlParams.get('user');
     
     if (gistParam) {
