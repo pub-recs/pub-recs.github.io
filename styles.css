@@ -184,7 +184,7 @@ header h1 {
 .section-content {
     max-height: 2000px;
     overflow: visible;
-    transition: max-height 0.3s ease-out, overflow 0s 0s;
+    transition: max-height 0.3s ease-out, overflow 0s;
 }
 
 .section-content.collapsed {
