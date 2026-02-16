@@ -330,12 +330,28 @@ function handleSearch() {
 
 // Initialize app
 function init() {
-    // Check if there's a username or gist URL in the URL parameters
+    let username = null;
+    
+    // Check if there's a username in the URL path (e.g., /dalevross or /dalevross/)
+    const pathname = window.location.pathname;
+    const pathParts = pathname.split('/').filter(part => part.length > 0);
+    
+    // If there's a path component, use it as the username
+    if (pathParts.length > 0) {
+        // Use the first path component as the username
+        username = pathParts[0];
+    }
+    
+    // URL parameters take precedence over path-based username
     const urlParams = new URLSearchParams(window.location.search);
     const gistParam = urlParams.get('gist') || urlParams.get('user');
     
     if (gistParam) {
-        gistUrlInput.value = gistParam;
+        username = gistParam;
+    }
+    
+    if (username) {
+        gistUrlInput.value = username;
         loadRecommendations();
     }
 }

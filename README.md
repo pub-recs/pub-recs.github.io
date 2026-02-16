@@ -20,11 +20,18 @@ A client-side web application to view an individual's recommendations stored as 
 4. Use the search box to filter recommendations by any text field
 5. Click on section headers to collapse/expand "Given" and "Received" sections
 
-### URL Parameters
+### Direct Links to User Recommendations
 
-You can also link directly to a user's recommendations:
+You can link directly to a user's recommendations using:
+
+**Path-based (recommended):**
+- `https://pub-recs.github.io/username` - e.g., `https://pub-recs.github.io/dalevross`
+
+**Query parameter-based:**
 - `https://pub-recs.github.io?user=username`
 - `https://pub-recs.github.io?gist=gist-url`
+
+The path-based approach provides cleaner URLs and automatically loads the recommendations.
 
 ## Creating Your Own Recommendations Gist
 
