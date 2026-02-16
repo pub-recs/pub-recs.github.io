@@ -182,15 +182,15 @@ header h1 {
 }
 
 .section-content {
-    max-height: 2000px;
-    overflow: visible;
-    transition: max-height 0.3s ease-out, overflow 0s;
+    max-height: 600px;
+    overflow-y: auto;
+    transition: max-height 0.3s ease-out, overflow-y 0s;
 }
 
 .section-content.collapsed {
     max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out, overflow 0s 0.3s;
+    overflow-y: hidden;
+    transition: max-height 0.3s ease-out, overflow-y 0s 0.3s;
 }
 
 .recommendation-list {
