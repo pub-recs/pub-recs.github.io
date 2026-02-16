@@ -182,8 +182,8 @@ header h1 {
 }
 
 .section-content {
-    max-height: 2000px;
-    overflow: visible;
+    max-height: 600px;
+    overflow-y: auto;
     transition: max-height 0.3s ease-out, overflow 0s;
 }
 
