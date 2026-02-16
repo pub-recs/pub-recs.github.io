@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Recommendations Viewer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Public Recommendations</h1>
+            <p class="subtitle">View recommendations from a public gist</p>
+        </header>
+
+        <div class="controls">
+            <div class="input-group">
+                <label for="gistUrl">Gist URL or Username:</label>
+                <input type="text" id="gistUrl" placeholder="Enter GitHub username or gist URL">
+                <button id="loadBtn">Load Recommendations</button>
+            </div>
+            <div class="search-group">
+                <input type="text" id="searchInput" placeholder="Search recommendations...">
+            </div>
+        </div>
+
+        <div id="error" class="error hidden"></div>
+        <div id="loading" class="loading hidden">Loading recommendations...</div>
+
+        <div id="recommendations" class="recommendations hidden">
+            <section class="section">
+                <div class="section-header" role="button" tabindex="0" onclick="toggleSection('given')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection('given')}">
+                    <h2>
+                        <span class="toggle-icon" id="given-icon">▼</span>
+                        Recommendations Given
+                        <span class="count" id="given-count"></span>
+                    </h2>
+                </div>
+                <div id="given-content" class="section-content">
+                    <div id="given-list" class="recommendation-list"></div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-header" role="button" tabindex="0" onclick="toggleSection('received')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection('received')}">
+                    <h2>
+                        <span class="toggle-icon" id="received-icon">▼</span>
+                        Recommendations Received
+                        <span class="count" id="received-count"></span>
+                    </h2>
+                </div>
+                <div id="received-content" class="section-content">
+                    <div id="received-list" class="recommendation-list"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

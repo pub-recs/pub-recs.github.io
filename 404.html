@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        // GitHub Pages SPA redirect trick
+        // This handles client-side routing by redirecting 404s back to index.html
+        // while preserving the path information
+        const path = window.location.pathname;
+        if (path && path !== '/') {
+            // Redirect to index.html with the path as a parameter
+            window.location.href = '/' + window.location.search + (window.location.search ? '&' : '?') + 'path=' + encodeURIComponent(path);
+        } else {
+            window.location.href = '/';
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting...</p>
+</body>
+</html>
