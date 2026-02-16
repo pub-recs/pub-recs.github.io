@@ -68,7 +68,7 @@ function parseGistInput(input) {
     }
     
     // Check if it's a full gist URL
-    const gistUrlPattern = /gist\.github\.com\/([^\/]+)\/([a-f0-9]+)/;
+    const gistUrlPattern = /gist\.github\.com\/([^\/]+)\/([a-fA-F0-9]+)/;
     const match = input.match(gistUrlPattern);
     
     if (match) {
@@ -79,7 +79,7 @@ function parseGistInput(input) {
     }
     
     // Check if it's just a gist ID (hex string)
-    if (/^[a-f0-9]+$/.test(input)) {
+    if (/^[a-fA-F0-9]+$/.test(input)) {
         throw new Error('Please provide the full gist URL or just the username');
     }
     
@@ -161,8 +161,11 @@ async function loadRecommendations() {
                 received: data.received || []
             };
             
-            // Initialize filtered recommendations
-            filteredRecommendations = { ...allRecommendations };
+            // Initialize filtered recommendations with deep copy
+            filteredRecommendations = {
+                given: [...allRecommendations.given],
+                received: [...allRecommendations.received]
+            };
             
             hideLoading();
             displayRecommendations();

@@ -29,7 +29,7 @@
 
         <div id="recommendations" class="recommendations hidden">
             <section class="section">
-                <div class="section-header" onclick="toggleSection('given')">
+                <div class="section-header" role="button" tabindex="0" onclick="toggleSection('given')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection('given')}">
                     <h2>
                         <span class="toggle-icon" id="given-icon">▼</span>
                         Recommendations Given
@@ -42,7 +42,7 @@
             </section>
 
             <section class="section">
-                <div class="section-header" onclick="toggleSection('received')">
+                <div class="section-header" role="button" tabindex="0" onclick="toggleSection('received')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSection('received')}">
                     <h2>
                         <span class="toggle-icon" id="received-icon">▼</span>
                         Recommendations Received
